@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Home } from "./Home";
+import Directions from "./Directions";
 
 class Inputs extends React.Component {
   constructor(props) {
