@@ -46,3 +46,17 @@ ol.gradient-list {
 .trip {
   font-family: 'Sonsie One', cursive;
 }
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.zig-zag { border: none; width: 33%; margin: auto; margin-top: 1%; margin-bottom: 1%; height: 3px; background: linear-gradient(135deg, #ECEDDC 25%, transparent 25%) -2px 0, linear-gradient(225deg, #ECEDDC 25%, transparent 25%) -2px 0, linear-gradient(315deg, #ECEDDC 25%, transparent 25%), linear-gradient(45deg, #ECEDDC 25%, transparent 25%); background-size: 4px 4px; background-color: #EC173A;}

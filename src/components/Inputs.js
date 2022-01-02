@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { RouteText } from "./RouteText";
+import { WeatherText } from "./WeatherText";
 import Button from "./Button";
 import axios from "axios";
 import "../App.css";
@@ -44,7 +45,6 @@ class Inputs extends React.Component {
         let data = response.data;
         this.setState({ route: data.routeDirections });
         this.setState({ weather: data.routeWeather });
-        console.log(data);
       });
 
     this.setState({ origin: "", dest: "", isActive: false });
@@ -81,18 +81,33 @@ class Inputs extends React.Component {
         </div>
       );
     }
-    if (this.state.isActive != true) {
-      return (
-        <div className="container">
-          <ol className="gradient-list">
-            {this.state.route.map(x => {
-              return <RouteText step={x} />;
-            })}
-          </ol>
 
-          <Button function={this.returnToInput} text={"New Search"} />
-        </div>
-      );
+    if (this.state.isActive != true) {
+      if (
+        this.state.route[0] !== "processing" &&
+        this.state.weather[0] != "processing"
+      ) {
+        for (let i = 0; i < this.state.weather.length; i++) {
+          return (
+            <div className="container">
+              <div className="row">
+                <ol className="gradient-list">
+                  <div className="column">
+                    <hr className="zig-zag" />
+                    <RouteText route={this.state.route} />
+                  </div>
+                  <div className="column"></div>
+                  <WeatherText weather={this.state.weather[i]} />
+                </ol>
+              </div>
+
+              <Button function={this.returnToInput} text={"New Search"} />
+            </div>
+          );
+        }
+      } else {
+        return <h3>Processing</h3>;
+      }
     }
   }
 }
