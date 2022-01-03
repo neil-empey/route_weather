@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { RouteText } from "./RouteText";
-import { WeatherText } from "./WeatherText";
+
+import WeatherRouteText from "./WeatherRouteText";
 import Button from "./Button";
 import axios from "axios";
 import "../App.css";
@@ -77,7 +77,7 @@ class Inputs extends React.Component {
             </label>
             <input type="submit" value="Submit" />
           </form>
-          <p>enter origin and destination points exactly as shown.</p>
+          <h4>Enter origin and destination points as shown.</h4>
         </div>
       );
     }
@@ -87,24 +87,15 @@ class Inputs extends React.Component {
         this.state.route[0] !== "processing" &&
         this.state.weather[0] != "processing"
       ) {
-        for (let i = 0; i < this.state.weather.length; i++) {
-          return (
-            <div className="container">
-              <div className="row">
-                <ol className="gradient-list">
-                  <div className="column">
-                    <hr className="zig-zag" />
-                    <RouteText route={this.state.route} />
-                  </div>
-                  <div className="column"></div>
-                  <WeatherText weather={this.state.weather[i]} />
-                </ol>
-              </div>
-
-              <Button function={this.returnToInput} text={"New Search"} />
-            </div>
-          );
-        }
+        return (
+          <div>
+            <WeatherRouteText
+              weather={this.state.weather}
+              route={this.state.route}
+            />
+            <Button function={this.returnToInput} text={"New Search"} />
+          </div>
+        );
       } else {
         return <h3>Processing</h3>;
       }

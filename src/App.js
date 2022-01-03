@@ -9,6 +9,13 @@ function App() {
       <h1 className="trip">TripCast</h1>
       <h2>Get Directions and Weather for points along your route</h2>
       <Inputs />
+
+      <div className="gif">
+        <iframe
+          className="frame"
+          src="https://giphy.com/embed/LBgf56psa07tCUJmpC"
+        ></iframe>
+      </div>
     </div>
   );
 }
