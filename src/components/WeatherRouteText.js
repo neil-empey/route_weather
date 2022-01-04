@@ -30,7 +30,7 @@ class WeatherRouteText extends Component {
         descrip.push(x["daily"][0]["weather"][0]["description"]);
       }
     });
-    console.log(descrip);
+
     return descrip;
   }
 
@@ -43,7 +43,10 @@ class WeatherRouteText extends Component {
           <h3>Directions</h3>
           <ul className="no-bullets">
             {this.state.route.map((x, i) => (
-              <li key={i}>{x}</li>
+              <>
+                <p>STEP {i + 1}</p>
+                <li key={i}>{x}</li>
+              </>
             ))}
           </ul>
         </div>
@@ -62,6 +65,13 @@ class WeatherRouteText extends Component {
             {this.getMinMax()[1]}
           </h3>
         </div>
+        <footer>
+          <p>
+            <small>
+              *All weather data is for the current calendar day of travel
+            </small>
+          </p>
+        </footer>
       </div>
     );
   }
